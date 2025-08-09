@@ -25,9 +25,12 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/gitops:latest,${{ secrets.DOCKER_USERNAME }}/gitops:${{ github.sha }}
 
+    - name: Setup Kustomize
       uses: imranismail/setup-kustomize@v1
       with:
         kustomize-version: '4.5.7'
+
+    - name: Update k8s manifests with new image
       env: 
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       run: |
