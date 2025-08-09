@@ -8,4 +8,4 @@ resources:
 images:
 - name: nodeserver
   newName: fpgce/gitops
-  newTag: d474d6b50c3e60462ca8ef064fe085f2f73bdec3
+  newTag: e7e6531000d4d211bc1c71f52b1fee60506d7e0e
