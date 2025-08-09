@@ -7,5 +7,5 @@ resources:
 
 images:
 - name: nodeserver
-  newName: nomequalquer/gitops
-  newTag: newtag
+  newName: fpgce/gitops
+  newTag: d474d6b50c3e60462ca8ef064fe085f2f73bdec3
