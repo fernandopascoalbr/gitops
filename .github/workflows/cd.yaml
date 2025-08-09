@@ -25,23 +25,17 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/gitops:latest,${{ secrets.DOCKER_USERNAME }}/gitops:${{ github.sha }}
 
-    - name: Setup kustomize
       uses: imranismail/setup-kustomize@v1
       with:
         kustomize-version: '4.5.7'
-
-    - name: Update kubernetes resources
       env: 
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       run: |
         cd k8s
-        kustomize edit set image nodeserver=DOCKER_USERNAME/gitops:$GITHUB_SHA
-
-    - name: Commit changes
-      run: |
+        kustomize edit set image nodeserver=${DOCKER_USERNAME}/gitops:$GITHUB_SHA
         git config --local user.name "GitHub Actions"
         git config --local user.email "action@github.com"
-        git commit -m "Bump docker version"
+        git commit -am "Bump docker version"
 
     - name: Push changes
       uses: ad-m/github-push-action@master
